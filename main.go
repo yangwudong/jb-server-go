@@ -140,5 +140,9 @@ func main() {
 	r.LoadHTMLGlob("templates/*")
 	r.GET("/", index)
 	r.POST("/generateLicense", generateLicense)
-	r.Run("0.0.0.0:8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "46793"
+	}
+	r.Run("0.0.0.0:" + port)
 }
